@@ -1,0 +1,39 @@
+<html>
+<link href="style.css" rel="stylesheet" type="text/css">
+<head>
+
+<script>
+var pic = new Image();
+pic.src = "http://i1356.photobucket.com/albums/q729/eleftheria_b/dailycssimages/elephant_zpssrmhao22.png";
+function draw(){
+    var ctx = document.getElementById('my_canvas').getContext('2d');
+    ctx.drawImage(pic, 0, 0);
+    ctx.fillStyle = "magenta";
+    ctx.fillRect(20, 20, 100, 100);
+    ctx.fillStyle = "blue";
+    ctx.fillRect(40, 40, 100, 100);
+	
+    var src = ctx.getImageData(0, 0, 100, 100);
+    var copy = ctx.createImageData(src.width, src.height);
+    // Make the copy's data array equal to the src data array
+    for(var i = 0; i < copy.data.length; i++){
+        copy.data[i] = src.data[i];
+    }
+    // copy.data.set(src.data); // Use this when IE respects set()
+    ctx.putImageData(copy, 250, 20);
+}
+window.onload = draw;
+</script>
+</head>
+<body>
+  
+  <h3 style="text-align: center">Canvas | Pixel Manipulation </h3>
+  
+<canvas id="my_canvas" width="600" height="450"></canvas>
+  
+  <div style="text-align: center">
+    <h5><a href="http://www.eleftheriabatsou.com" target="_blank">Eleftheria Batsou</a> | <a href="http://codepen.io/EleftheriaBatsou" target="_blank">Projects</a></h5>
+  </div> <!-- end footer -->
+  
+</body>  
+</html>
